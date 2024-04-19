@@ -4,7 +4,7 @@ version = "2.0.0"
 # Fill out these fields if you intend to generate HTML documentation or publish
 # your project to the Hex package manager.
 #
-description = "Simple OTP-based memoization for Gleam"
+description = "Simple memoization for Gleam"
 licences = ["Apache-2.0"]
 target = "erlang"
 repository = { type = "github", user = "hunkyjimpjorps", repo = "rememo" }
