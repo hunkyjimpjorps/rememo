@@ -1,4 +1,4 @@
-//// This is the memoization implementation that uses [`gleam/otp/actor`](https://www.erlang.org/doc/man/ets.html).  
+//// This is the memoization implementation that uses [`gleam/otp/actor`](https://hexdocs.pm/gleam_otp/gleam/otp/actor.html).  
 //// This is the slower (and original) of the two implementations.
 
 import gleam/dict.{type Dict}
