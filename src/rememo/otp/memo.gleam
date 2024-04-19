@@ -1,7 +1,10 @@
+//// This is the memoization implementation that uses [`gleam/otp/actor`](https://www.erlang.org/doc/man/ets.html).  
+//// This is the slower (and original) of the two implementations.
+
 import gleam/dict.{type Dict}
-import gleam/otp/actor.{type Next, Continue, Stop}
 import gleam/erlang/process.{type Subject, Normal}
 import gleam/option.{None}
+import gleam/otp/actor.{type Next, Continue, Stop}
 
 const timeout = 1000
 
