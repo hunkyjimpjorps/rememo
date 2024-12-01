@@ -3,7 +3,7 @@
 [![Package Version](https://img.shields.io/hexpm/v/rememo)](https://hex.pm/packages/rememo)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/rememo/)
 
-This is a basic [memoization](https://en.wikipedia.org/wiki/Memoization) method for Gleam on the Erlang target, for caching and reusing the results of function calls when possible.  
+This is a basic [memoization](https://en.wikipedia.org/wiki/Memoization) method for Gleam on both the Erlang and Javascript targets, for caching and reusing the results of function calls when possible.  
 
 Adding to and reading from the memoization cache incurs some overhead, but in situations that call for it, like dynamic programming problems where the same basic subproblem recurs hundreds or thousands of times, the tradeoff is worthwhile.  Always benchmark your code when in doubt.
 
@@ -12,7 +12,7 @@ gleam add rememo
 ```
 
 ```gleam
-import rememo/ets/memo // This is the recommended implementation to use
+import rememo/memo 
 import gleam/io
 
 pub fn main() {
