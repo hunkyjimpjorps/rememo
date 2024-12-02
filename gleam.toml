@@ -1,10 +1,9 @@
 name = "rememo"
-version = "3.0.0"
+version = "3.1.0"
 
 description = "Simple memoization for Gleam"
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "hunkyjimpjorps", repo = "rememo" }
-target = "javascript"
 
 internal_modules = [
   "internal/*"
