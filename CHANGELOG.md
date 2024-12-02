@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.0 - 24-12-2
+
+* Changed the JS implementation to avoid a pitfall with reference equality causing the cache to be useless for more complicated key types
+
 ## v3.0.0 - 24-12-1
 
 * Switched to a default implementation in `rememo/memo`, which will use the ETS implementation on the Erlang target and a new Javascript map implementation on the JS target. You can no longer import a specific implementation.
