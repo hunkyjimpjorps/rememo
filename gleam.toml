@@ -4,6 +4,7 @@ version = "3.0.0"
 description = "Simple memoization for Gleam"
 licences = ["Apache-2.0"]
 repository = { type = "github", user = "hunkyjimpjorps", repo = "rememo" }
+target = "javascript"
 
 internal_modules = [
   "internal/*"
@@ -16,6 +17,7 @@ gleam_erlang = "~> 0.25"
 gleam_javascript = ">= 0.13.0 and < 1.0.0"
 carpenter = ">= 0.3.1 and < 1.0.0"
 youid = ">= 1.0.0 and < 2.0.0"
+javascript_mutable_reference = ">= 1.0.0 and < 2.0.0"
 
 [dev-dependencies]
 gleeunit = "~> 1.0"

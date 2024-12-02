@@ -1,13 +1,15 @@
 @target(javascript)
-import gleam/javascript/map
+import gleam/dict.{type Dict}
+@target(javascript)
+import javascript/mutable_reference.{type MutableReference}
 
 @target(javascript)
 pub type Cache(k, v) =
-  map.Map(k, v)
+  MutableReference(Dict(k, v))
 
 @target(javascript)
-/// Start an actor that holds a memoization cache.  Pass this cache to the
-/// function you want to memoize.
+/// Create a memoization cache.  Pass this cache to the function you want to memoize.
+/// 
 /// This is best used with a `use` expression:
 /// ```gleam
 /// use cache <- create()
@@ -15,22 +17,20 @@ pub type Cache(k, v) =
 /// ```
 /// 
 pub fn create(apply fun: fn(Cache(a, b)) -> c) -> c {
-  let map = map.new()
-
-  let result = fun(map)
-  result
+  dict.new() |> mutable_reference.new |> fun
 }
 
 @target(javascript)
 /// Manually add a key-value pair to the memoization cache.
 pub fn set(in cache: Cache(k, v), for key: k, insert value: v) -> Nil {
-  map.set(cache, key, value)
+  mutable_reference.update(cache, fn(d) { dict.insert(d, key, value) })
+  Nil
 }
 
 @target(javascript)
 /// Manually look up a value from the memoization cache for a given key.
 pub fn get(from cache: Cache(k, v), fetch key: k) -> Result(v, Nil) {
-  map.get(cache, key)
+  cache |> mutable_reference.get |> dict.get(key)
 }
 
 @target(javascript)
@@ -47,11 +47,11 @@ pub fn get(from cache: Cache(k, v), fetch key: k) -> Result(v, Nil) {
 /// ```
 /// 
 pub fn memoize(with cache: Cache(k, v), this key: k, apply fun: fn() -> v) -> v {
-  case map.get(from: cache, fetch: key) {
+  case get(from: cache, fetch: key) {
     Ok(value) -> value
     Error(Nil) -> {
       let result = fun()
-      map.set(cache, key, result)
+      set(cache, key, result)
       result
     }
   }

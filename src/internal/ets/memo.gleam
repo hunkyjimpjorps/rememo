@@ -1,10 +1,13 @@
 @target(erlang)
 import carpenter/table.{type Set, AutoWriteConcurrency, Private}
+@target(erlang)
 import youid/uuid
 
+@target(erlang)
 pub type Cache(k, v) =
   Set(k, v)
 
+@target(erlang)
 pub fn create(apply fun: fn(Cache(k, v)) -> t) {
   let table_name = uuid.v4_string()
 
@@ -22,10 +25,12 @@ pub fn create(apply fun: fn(Cache(k, v)) -> t) {
   result
 }
 
+@target(erlang)
 pub fn set(in cache: Cache(k, v), for key: k, insert value: v) -> Nil {
   table.insert(cache, [#(key, value)])
 }
 
+@target(erlang)
 pub fn get(from cache: Cache(k, v), fetch key: k) -> Result(v, Nil) {
   case table.lookup(cache, key) {
     [] -> Error(Nil)
@@ -33,6 +38,7 @@ pub fn get(from cache: Cache(k, v), fetch key: k) -> Result(v, Nil) {
   }
 }
 
+@target(erlang)
 pub fn memoize(with cache: Cache(k, v), this key: k, apply fun: fn() -> v) -> v {
   case get(from: cache, fetch: key) {
     Ok(value) -> value
