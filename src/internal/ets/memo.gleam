@@ -1,7 +1,9 @@
 @target(erlang)
 import carpenter/table.{type Set, AutoWriteConcurrency, Private}
 @target(erlang)
-import youid/uuid
+import gleam/string
+@target(erlang)
+import tempo/time
 
 @target(erlang)
 pub type Cache(k, v) =
@@ -9,7 +11,7 @@ pub type Cache(k, v) =
 
 @target(erlang)
 pub fn create(apply fun: fn(Cache(k, v)) -> t) {
-  let table_name = uuid.v4_string()
+  let table_name = time.now_unique() |> string.inspect
 
   let assert Ok(cache_table) =
     table.build(table_name)

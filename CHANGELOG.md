@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.2.0 - 24-12-11
+
+* Dropping `youid` and switching to `gtempo` to generate a unique ETS table name, in order to get rid of the scary integer accuracy warning produced by `youid` when compiled on JS
+
 ## v3.1.0 - 24-12-2
 
 * Changed the JS implementation to avoid a pitfall with reference equality causing the cache to be useless for more complicated key types
