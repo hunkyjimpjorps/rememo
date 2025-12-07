@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.3.0 - 25-12-07
+
+* Upgraded dependencies to work on more modern versions of Gleam:
+  * now using a vendored copy of [ghivert's fork of `carpenter` ](https://github.com/grottohub/carpenter) until the `carpenter` on Hex is updated or there's a better alternative; if you know a better set of ETS bindings please let me know!
+  * `gtempo`, `gleam_erlang` and `gleam_stdlib` all bumped to current versions
+
 ## v3.2.0 - 24-12-11
 
 * Dropping `youid` and switching to `gtempo` to generate a unique ETS table name, in order to get rid of the scary integer accuracy warning produced by `youid` when compiled on JS

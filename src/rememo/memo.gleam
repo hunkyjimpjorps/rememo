@@ -4,14 +4,8 @@
 //// database](https://www.erlang.org/doc/apps/erts/persistent_term.html).
 //// * For the Javascript build target, the cache is a [mutable Javascript map](
 //// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
-
-@target(erlang)
 import internal/ets/memo as ets
 
-@target(javascript)
-import internal/js/memo as js
-
-@target(erlang)
 /// Make a new memoization cache, of the appropriate type for the build target.
 /// Pass this cache to the function you want to memoize.
 /// 
@@ -25,36 +19,18 @@ pub fn create(apply fun) {
   ets.create(fun)
 }
 
-@target(javascript)
-pub fn create(apply fun) {
-  js.create(fun)
-}
-
-@target(erlang)
 /// Manually add a key-value pair to the memoization cache.
 /// Useful if you need to pre-seed the cache with a starting value, for example.
 pub fn set(in cache, for key, insert value) {
   ets.set(cache, key, value)
 }
 
-@target(javascript)
-pub fn set(in cache, for key, insert value) {
-  js.set(cache, key, value)
-}
-
-@target(erlang)
 /// Manually look up a value from the memoization cache for a given key.
 /// Useful if you want to also return intermediate results as well as a final result, for example.
 pub fn get(from cache, fetch key) {
   ets.get(cache, key)
 }
 
-@target(javascript)
-pub fn get(from cache, fetch key) {
-  js.get(cache, key)
-}
-
-@target(erlang)
 /// Look up the value associated with the given key in the memoization cache,
 /// and return it if it exists.  If it doesn't exist, evaluate the callback function
 /// and update the cache with the value it returns.
@@ -69,9 +45,4 @@ pub fn get(from cache, fetch key) {
 /// 
 pub fn memoize(with cache, this key, apply fun) {
   ets.memoize(cache, key, fun)
-}
-
-@target(javascript)
-pub fn memoize(with cache, this key, apply fun) {
-  js.memoize(cache, key, fun)
 }
