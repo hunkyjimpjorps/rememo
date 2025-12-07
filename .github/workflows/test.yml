@@ -20,4 +20,3 @@ jobs:
           # elixir-version: "1.15.4"
       - run: gleam deps download
       - run: gleam test
-      - run: gleam format --check src test

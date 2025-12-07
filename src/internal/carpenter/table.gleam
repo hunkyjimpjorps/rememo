@@ -1,11 +1,11 @@
 //// [Erlang ETS Documentation](https://www.erlang.org/doc/apps/stdlib/ets.html)
 
-import internal/carpenter/ets_bindings
-import internal/carpenter/props
 import gleam/dynamic/decode
 import gleam/erlang/atom
 import gleam/erlang/process
 import gleam/option.{type Option, None, Some}
+import internal/carpenter/ets_bindings
+import internal/carpenter/props
 
 pub type TableBuilder(k, v) {
   TableBuilder(

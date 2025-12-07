@@ -4,6 +4,7 @@
 //// database](https://www.erlang.org/doc/apps/erts/persistent_term.html).
 //// * For the Javascript build target, the cache is a [mutable Javascript map](
 //// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
+
 import internal/ets/memo as ets
 
 /// Make a new memoization cache, of the appropriate type for the build target.
