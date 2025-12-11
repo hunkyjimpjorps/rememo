@@ -16,8 +16,9 @@ import rememo/memo
 import gleam/io
 
 pub fn main() {
-  // Start the actor that holds the cached values
-  // for the duration of this block
+  // Make the mutable state that holds the cached values
+  // for the duration of this block, return the final value of 
+  // the called function, then delete the mutable state
   use cache <- memo.create()
   fib(300, cache)
   |> io.debug
